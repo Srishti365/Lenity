@@ -1,0 +1,41 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Calistoga|Crete+Round|Lobster+Two|Satisfy|Cookie&display=swap" rel="stylesheet');
+
+/* h2{float:left; width:100%; color:#fff; margin-bottom:40px; font-size: 14px; position:relartive; z-index:3; margin-top:30px}
+h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px; font-weight:700}
+h2 a{color:#fff; font-weight:bold;} */
+
+/* .head{float:left;width:100%;} */
+/* .heading{width:100%;height:400px;background-color: #d79abc;padding-top: 100px;} */
+/* .headingText{font-size:100px;font-family:'Verdana';} */
+.requests-heading{width:100%;height:400px;background-color: #d79abc;padding-top: 100px;}
+.requestsHeadingText{font-size:100px;font-family:'Satisfy';color:#000}
+
+/* .result{font-size: 30px;font-family:'Satisfy'} */
+.search-box{width:70%; margin-top:10px;}
+/* .search-box:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  } */
+.listing-block{background:#fff; height:150px; padding-top:10px;margin-left:100px;}
+/* .slimScrollDiv{width:41%!important;} */
+.media {background:#fff; position:relative; margin-bottom:15px;}
+.media img{width:200px;margin:0; height:136px;}
+.media-body{border:2px solid #8D00ff;padding-top: 10px; padding-bottom:30px;height:126px;margin-left: 400px;}
+.media .price{float:left; width:100%; font-size:20px;font-weight:600}
+.media .price small{display:block; font-size:17px}
+.media .stats{float:left; width:100%; margin-top:10px;}
+.media .stats span{float:left; margin-right:10px; font-size:15px;}
+.media .stats span i{margin-right:7px;}
+.media .address{float:left; width:100%;font-size:14px; margin-top:5px;margin-bottom:7px;}
+.media .fav-box{position:absolute; right:10px; font-size:20px; top:4px; }
+.acc-heading{
+    color:#000;
+    font-size:40;
+    font-family: 'Satisfy';
+}
+.acc-hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+/* .map-box{background-color:#A3CCFF;} */

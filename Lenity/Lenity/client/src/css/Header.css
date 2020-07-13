@@ -1,0 +1,71 @@
+.main_menu .navbar{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+}
+
+a.navbar-brand.name{
+    color: white;
+}
+
+.foodcontainer{
+    background-image: url('banner_img.png');
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+
+.itemcontainer{
+    background-image: url('banner_img.png');
+    position: relative;
+    height: 600px;
+    width: 100%;
+
+}
+
+.formcontainer{
+    background-color: white;
+    width: 50%;
+    height: 80%;
+    padding: 30px;
+    margin-top: 30px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transition: 0.5s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.formcontainer:hover{
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.card.search{
+    margin:40px;
+}
+.event_part.tricker{
+    background-image:linear-gradient(to left, #7f00ff 0%, #e100ff 50%, #7f00ff 100%);
+}
+
+.single_event.media:hover{
+    background-image:linear-gradient(to left, #7f00ff 0%, #e100ff 50%, #7f00ff 100%);
+    color: white;
+
+}
+
+.search-form1{
+    
+    padding-top: 50px;
+    margin-left:250px;
+    padding-bottom: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.header:hover{
+    color: white;
+}
+
+

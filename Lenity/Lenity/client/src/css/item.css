@@ -1,0 +1,104 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
+
+.heading1{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 46%;
+}
+
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  margin-top: 10%;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  background: #CA7C4E;
+  background: linear-gradient(to top right, purple 0%, #B19CD9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEBE6C', endColorstr='#CA7C4E',GradientType=1 );
+  color:purple;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.center {
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  height: 400px;
+  width: 400px;
+  background: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+}
+
+.profile {
+  float: left;
+  width: 200px;
+  height: 400px;
+  text-align: center;
+}
+
+.profile .name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+.profile .actions {
+  margin-top: 80px;
+}
+.profile .actions .btn {
+  display: block;
+  width: 120px;
+  height: 40px;
+  margin: 0 auto 10px auto;
+  background: none;
+  border: 1px solid #786450;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  box-sizing: border-box;
+  transition: all .3s ease-in-out;
+  color:black;
+}
+.profile .actions .btn:hover {
+  background: #786450;
+  color: #fff;
+}
+
+.stats {
+  float: left;
+}
+.stats .box {
+  box-sizing: border-box;
+  width: 200px;
+  height: 133px;
+  background: #F5E8DF;
+  text-align: center;
+  padding-top: 28px;
+  transition: all .4s ease-in-out;
+}
+.stats .box:hover {
+  background: #E1CFC2;
+  cursor: pointer;
+}
+.stats .box:nth-child(2) {
+  margin: 1px 0;
+}
+.stats span {
+  display: block;
+}
+.stats .value {
+  font-size: 20px;
+  font-weight: 600;
+}
+.stats .parameter {
+  font-size: 17px;
+}

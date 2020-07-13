@@ -1,0 +1,22 @@
+
+
+.home{
+    background-image: url('banner_img.png');
+}
+
+.container{
+    position: relative;
+}
+
+.single_service_text:hover{
+    background-image:linear-gradient(to left, #7f00ff 0%, #e100ff 50%, #7f00ff 100%);
+
+}
+
+.service_part{
+    padding-top: 20px;
+}
+
+.client_part{
+    padding-top: 60px;
+}
