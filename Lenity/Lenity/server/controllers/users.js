@@ -24,8 +24,8 @@ signToken = user => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "email",
+    pass: "password"
   }
 });
 
@@ -79,13 +79,13 @@ module.exports = {
         Have a pleasant day.`;
 
     const mailOptions = {
-      from: "projectlenity365@gmail.com",
+      from: "email",
       to: email,
       subject: "Please verify your email",
       text: html
     };
 
-    await transporter.sendMail(mailOptions, function(error, info) {
+    await transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
       } else {
@@ -196,13 +196,13 @@ module.exports = {
     http://localhost:5000/users/checkPassword?email=${email}
     Have a pleasant day!`;
     const mailOptions = {
-      from: "projectlenity365@gmail.com",
+      from: "email",
       to: email,
       subject: "Please verify your email",
       text: html
     };
 
-    await transporter.sendMail(mailOptions, function(error, info) {
+    await transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
       } else {
@@ -222,7 +222,7 @@ module.exports = {
       {
         $set: { "local.password": hash }
       },
-      function(err, res) {
+      function (err, res) {
         if (err) throw err;
       }
     );
@@ -240,7 +240,7 @@ module.exports = {
           contactno: contactno
         }
       },
-      function(err, res) {
+      function (err, res) {
         if (err) throw err;
         console.log("1 document updated");
       }
@@ -280,7 +280,7 @@ module.exports = {
         return res.status(403).json({ error: "Enter valid password" });
       }
 
-      User.findOneAndRemove({ "local.email": email }, function(err, res) {
+      User.findOneAndRemove({ "local.email": email }, function (err, res) {
         if (err) throw err;
         console.log("1 document removed");
       });

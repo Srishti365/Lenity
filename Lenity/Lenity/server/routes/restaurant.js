@@ -21,8 +21,8 @@ const UsersController = require("../controllers/users");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "email",
+    pass: "password"
   }
 });
 
@@ -46,13 +46,13 @@ router.route("/applyCoupon").post(passportJWT, async (req, res, next) => {
         Enjoy your meal.!!!!!`;
 
   const mailOptions = {
-    from: "projectlenity365@gmail.com",
+    from: "email",
     to: profile.local.email,
     subject: "Please check your email",
     text: html
   };
 
-  await transporter.sendMail(mailOptions, function(error, info) {
+  await transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
     } else {
@@ -84,8 +84,8 @@ router.route("/donate").post(passportJWT, async (req, res, next) => {
 
   console.log(food);
 
-  await food.save().then(async function() {
-    await Restaurant.findOne({ name: req.user.name }).then(async function(
+  await food.save().then(async function () {
+    await Restaurant.findOne({ name: req.user.name }).then(async function (
       record
     ) {
       record.food.push(food);

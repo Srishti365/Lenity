@@ -23,8 +23,8 @@ const UsersController = require("../controllers/users");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "Your email here",
+    pass: "Your password here"
   }
 });
 
@@ -33,7 +33,7 @@ var options = {
 
   // Optional depending on the providers
   httpAdapter: "https", // Default
-  apiKey: "AIzaSyDU_kJ3UUPCV-HLOaTfDf9zfqBBAXQ0VHE", // for Mapquest, OpenCage, Google Premier
+  apiKey: "API KEY", // for Mapquest, OpenCage, Google Premier
   formatter: null // 'gpx', 'string', ...
 };
 
@@ -45,7 +45,7 @@ router.route("/").get(passportJWT, async (req, res, next) => {
     await req.user;
     //console.log(req.user);
     var geocoder = NodeGeocoder(options);
-    geocoder.geocode(req.user.location).then(async function(loc) {
+    geocoder.geocode(req.user.location).then(async function (loc) {
       console.log(loc);
       await Crop;
       StorageRequest.aggregate()
@@ -58,7 +58,7 @@ router.route("/").get(passportJWT, async (req, res, next) => {
           spherical: true,
           distanceField: "dis"
         })
-        .then(function(crops) {
+        .then(function (crops) {
           res.json({ truck_agent: req.user, truck_data: crops });
         });
     });
@@ -70,9 +70,9 @@ router.route("/").get(passportJWT, async (req, res, next) => {
 router.route("/").post(passportJWT, async (req, res, next) => {
   try {
     console.log(req.body); //this will have id of the storageRequest
-    await StorageRequest.findById(req.body.id).then(async function(record) {
+    await StorageRequest.findById(req.body.id).then(async function (record) {
       await Crop.findOne({ "storageRequest._id": req.body.id }).then(
-        async function(data) {
+        async function (data) {
           res.json({ details: record, email: data.email });
         }
       );
@@ -88,14 +88,14 @@ router.route("/view_route").post(passportJWT, async (req, res, next) => {
     console.log("print body", req.body); //this will have id of the storageRequest
     await req.body;
     var geocoder = NodeGeocoder(options);
-    await StorageRequest.findById(req.body.id).then(async function(record) {
+    await StorageRequest.findById(req.body.id).then(async function (record) {
       //record.location   //res.user.location
-      geocoder.geocode(req.user.location).then(async function(loc) {
+      geocoder.geocode(req.user.location).then(async function (loc) {
         lat_truck = loc[0].latitude;
         long_truck = loc[0].longitude;
         await lat_truck;
         await long_truck;
-        geocoder.geocode(record.location).then(async function(loc1) {
+        geocoder.geocode(record.location).then(async function (loc1) {
           console.log("location", loc1);
           lat_stor = loc1[0].latitude;
           long_stor = loc1[0].longitude;
@@ -122,9 +122,9 @@ router
       console.log(req.body); //this will have id of the storageRequest
       await req.body;
       var geocoder = NodeGeocoder(options);
-      await StorageRequest.findById(req.body.id).then(async function(record) {
+      await StorageRequest.findById(req.body.id).then(async function (record) {
         //record.location   //res.user.location
-        geocoder.geocode(record.storage_location).then(async function(loc) {
+        geocoder.geocode(record.storage_location).then(async function (loc) {
           console.log(record);
 
           await loc;
@@ -133,7 +133,7 @@ router
           long_storage = loc[0].longitude;
           await lat_storage;
           await long_storage;
-          geocoder.geocode(record.location).then(async function(loc1) {
+          geocoder.geocode(record.location).then(async function (loc1) {
             await loc1;
             lat_farm = loc1[0].latitude;
             long_farm = loc1[0].longitude;
@@ -162,14 +162,14 @@ router.route("/confirm_pickup").post(passportJWT, async (req, res, next) => {
     StorageRequest.findOneAndUpdate(
       { _id: req.body.id },
       { $set: { confirm_status: true } },
-      async function(err, record) {
+      async function (err, record) {
         if (err) throw err;
         await record.save;
         console.log("printtttt");
         await Crop.findOneAndUpdate(
           { "storageRequest._id": req.body.id },
           { $set: { "storageRequest.$.confirm_status": true } },
-          async function(err2, data) {
+          async function (err2, data) {
             if (err2) throw err2;
             console.log("printing...", data);
             //-------------------------mail--------------
@@ -179,24 +179,24 @@ router.route("/confirm_pickup").post(passportJWT, async (req, res, next) => {
         Thank you for your contribution!`;
 
             const mailOptions = {
-              from: "projectlenity365@gmail.com",
+              from: "email",
               to: data.email,
               subject: "Crop pick up confirmed",
               text: html
             };
 
-            await transporter.sendMail(mailOptions, function(error, info) {
+            await transporter.sendMail(mailOptions, function (error, info) {
               if (error) {
                 console.log(error);
               } else {
                 console.log("Email sent" + info.response);
               }
             });
-            await StorageRequest.findById(req.body.id).then(async function(
+            await StorageRequest.findById(req.body.id).then(async function (
               order
             ) {
               console.log(order);
-              await Truck_agent.findById(req.user.id).then(async function(
+              await Truck_agent.findById(req.user.id).then(async function (
                 agent
               ) {
                 await agent.deliveries.push(order);
@@ -246,13 +246,13 @@ router.route("/pending").post(passportJWT, async (req, res, next) => {
     await StorageRequest.findOneAndUpdate(
       { _id: req.body.id },
       { $set: { status: true } },
-      async function(err, record) {
+      async function (err, record) {
         if (err) throw err;
         await record.save;
         await Crop.findOneAndUpdate(
           { "storageRequest._id": req.body.id },
           { $set: { "storageRequest.$.status": true } },
-          async function(err2, data) {
+          async function (err2, data) {
             if (err2) throw err2;
             //-------------------------mail--------------
 
@@ -261,13 +261,13 @@ router.route("/pending").post(passportJWT, async (req, res, next) => {
         Thank you for your contribution!`;
 
             const mailOptions = {
-              from: "projectlenity365@gmail.com",
+              from: "your email here",
               to: data.email,
               subject: "Crop delivery done",
               text: html
             };
 
-            await transporter.sendMail(mailOptions, function(error, info) {
+            await transporter.sendMail(mailOptions, function (error, info) {
               if (error) {
                 console.log(error);
               } else {
@@ -279,7 +279,7 @@ router.route("/pending").post(passportJWT, async (req, res, next) => {
             await Truck_agent.findOneAndUpdate(
               { "deliveries._id": req.body.id },
               { $set: { "deliveries.$.status": true } },
-              async function(err3, agent) {
+              async function (err3, agent) {
                 if (err3) throw err3;
                 res.json({ truck_agent: agent });
               }

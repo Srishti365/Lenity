@@ -25,8 +25,8 @@ console.log("Za warudo");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "your email here",
+    pass: "password"
   }
 });
 
@@ -366,7 +366,7 @@ router.route("/food").post(passportJWT, async (req, res, next) => {
     Have a great day.!!!!!`;
 
       const mailOptions = {
-        from: "projectlenity365@gmail.com",
+        from: "email",
         to: req.user.local.email,
         subject: "Received coupon",
         text: html
@@ -425,7 +425,7 @@ router.route("/food").post(passportJWT, async (req, res, next) => {
 // Have a pleasant day!`;
 
 //     const mailOptions = {
-//       from: 'projectlenity365@gmail.com',
+//       from: 'email',
 //       to: record.email,
 //       subject: 'Delivery Notification',
 //       text: html
@@ -516,7 +516,7 @@ Please reach there asap and confirm after successful delivery.
 Have a pleasant day!`;
 
               const mailOptions = {
-                from: "projectlenity365@gmail.com",
+                from: "email",
                 to: record.email,
                 subject: "Delivery Notification",
                 text: html

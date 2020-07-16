@@ -94,7 +94,7 @@ router.get("/chat", passportJWT, async (req, res) => {
 router.route("/dashboard").get(passportJWT, async (req, res, next) => {
   try {
     var receivedRequests = [];
-    await Request.find().then(async function(result) {
+    await Request.find().then(async function (result) {
       await result;
       for (var i = 0; i < result.length; i++) {
         for (var j = 0; j < result[i].itemRequested.length; j++) {
@@ -115,7 +115,7 @@ router.route("/dashboard").get(passportJWT, async (req, res, next) => {
 
     var sentRequests = [];
     await Request.findOne({ requestor: req.user.local.username }).then(
-      async function(result) {
+      async function (result) {
         await result;
 
         if (result) {
@@ -133,7 +133,7 @@ router.route("/dashboard").get(passportJWT, async (req, res, next) => {
     // console.log(sentRequests);
     var receivedAndAccepted = [];
     //confirmationStatus
-    await Request.find().then(async function(result) {
+    await Request.find().then(async function (result) {
       await result;
       for (var i = 0; i < result.length; i++) {
         for (var j = 0; j < result[i].itemRequested.length; j++) {
@@ -155,7 +155,7 @@ router.route("/dashboard").get(passportJWT, async (req, res, next) => {
 
     var sentAndAccepted = [];
     //confirmationStatus
-    await Request.find().then(async function(result) {
+    await Request.find().then(async function (result) {
       await result;
       for (var i = 0; i < result.length; i++) {
         for (var j = 0; j < result[i].itemRequested.length; j++) {
@@ -210,7 +210,7 @@ router.post(
       console.log(id);
       console.log(user);
 
-      await Request.find().then(async function(result) {
+      await Request.find().then(async function (result) {
         await result;
         for (var i = 0; i < result.length; i++) {
           console.log("reult");
@@ -224,7 +224,7 @@ router.post(
               result[i].itemRequested[j].confirmationStatus = 1;
               result[i].save();
 
-              await Item.findOne({ _id: id }).then(async function(rec) {
+              await Item.findOne({ _id: id }).then(async function (rec) {
                 await rec;
                 rec.confirmationStatus = 1;
                 rec.save();

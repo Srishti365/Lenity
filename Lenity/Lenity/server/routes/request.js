@@ -18,8 +18,8 @@ const NgoInquiry = models.ngoInquiry;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "your email here",
+    pass: "password"
   }
 });
 
@@ -44,13 +44,13 @@ router.route("/").post(passportJWT, async (req, res, next) => {
       quantity,
       status: false
     });
-    await newRequest.save().then(async function() {
-      await NgoInquiry.findById(req.user.id).then(async function(record) {
+    await newRequest.save().then(async function () {
+      await NgoInquiry.findById(req.user.id).then(async function (record) {
         await record.requests.push(newRequest);
-        await record.save().then(async function() {
+        await record.save().then(async function () {
           //assigning executive
           var geocoder = NodeGeocoder(options);
-          geocoder.geocode(newRequest.location).then(async function(loc) {
+          geocoder.geocode(newRequest.location).then(async function (loc) {
             Executive.aggregate()
               .near({
                 near: {
@@ -61,13 +61,13 @@ router.route("/").post(passportJWT, async (req, res, next) => {
                 spherical: true,
                 distanceField: "dis"
               })
-              .then(async function(exes) {
+              .then(async function (exes) {
                 record1 = exes[0];
                 await record1;
                 // console.log(record)
                 // console.log('print record',record._id);
                 if (record1) {
-                  await Executive.findById(record1._id).then(async function(
+                  await Executive.findById(record1._id).then(async function (
                     exe1
                   ) {
                     console.log("finding id:", exe1);
@@ -91,13 +91,13 @@ Please reach there asap and confirm after successful delivery.
 Have a pleasant day!`;
 
                 const mailOptions = {
-                  from: "projectlenity365@gmail.com",
+                  from: "email",
                   to: record1.email,
                   subject: "Delivery Notification",
                   text: html
                 };
 
-                await transporter.sendMail(mailOptions, function(error, info) {
+                await transporter.sendMail(mailOptions, function (error, info) {
                   if (error) {
                     console.log(error);
                   } else {

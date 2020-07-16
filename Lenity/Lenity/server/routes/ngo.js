@@ -23,8 +23,8 @@ Truck_agent = models.truckprofile;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "Your email here",
+    pass: "password"
   }
 });
 
@@ -67,13 +67,13 @@ router.post("/", passportJWT, async (req, res, next) => {
         We will come to your location you specified, ${location1} to pick up the donations and deliver them to the NGO`;
 
     const mailOptions = {
-      from: "projectlenity365@gmail.com",
+      from: "email",
       to: pro1.local.email,
       subject: "Thank you for donating",
       text: html
     };
 
-    await transporter.sendMail(mailOptions, function(error, info) {
+    await transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
       } else {
@@ -81,14 +81,14 @@ router.post("/", passportJWT, async (req, res, next) => {
       }
     });
     //-------------------------------------------
-    await ngo1.save().then(async function() {
+    await ngo1.save().then(async function () {
       //---------assigning executive-----------'
 
       //------------------map------------
 
       var geocoder = NodeGeocoder(options);
 
-      geocoder.geocode(location1).then(async function(loc) {
+      geocoder.geocode(location1).then(async function (loc) {
         // console.log(loc);
         // res.json({loc});
         // console.log(loc[0].latitude);
@@ -102,14 +102,14 @@ router.post("/", passportJWT, async (req, res, next) => {
             spherical: true,
             distanceField: "dis"
           })
-          .then(async function(exes) {
+          .then(async function (exes) {
             // console.log('exes:', exes);
             record = exes[0];
             await record;
             // console.log(record)
             // console.log('print record',record._id);
             if (record) {
-              await Executive.findById(record._id).then(async function(exe1) {
+              await Executive.findById(record._id).then(async function (exe1) {
                 if (exe1) {
                   console.log("finding id:", exe1);
                   exe1.ngo.addToSet(ngo1);
@@ -133,13 +133,13 @@ router.post("/", passportJWT, async (req, res, next) => {
         Have a pleasant day!`;
 
             const mailOptions = {
-              from: "projectlenity365@gmail.com",
+              from: "email",
               to: record.email,
               subject: "Delivery update",
               text: html
             };
 
-            await transporter.sendMail(mailOptions, function(error, info) {
+            await transporter.sendMail(mailOptions, function (error, info) {
               if (error) {
                 console.log(error);
               } else {
@@ -162,7 +162,7 @@ router.get("/check", (req, res, next) => {
   var geocoder = NodeGeocoder(options);
 
   // Using callback
-  geocoder.geocode("sri city").then(function(loc) {
+  geocoder.geocode("sri city").then(function (loc) {
     console.log(loc);
     // res.json({loc});
     console.log(loc[0].latitude);
@@ -176,7 +176,7 @@ router.get("/check", (req, res, next) => {
         spherical: true,
         distanceField: "dis"
       })
-      .then(function(exes) {
+      .then(function (exes) {
         //console.log('exes:', exes);
         //res.json({exes:exes[0]});
         res.json(loc);

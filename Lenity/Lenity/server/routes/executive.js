@@ -28,8 +28,8 @@ NgoInquiry = models.ngoInquiry;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "Your email here",
+    pass: "password"
   }
 });
 
@@ -85,7 +85,7 @@ router
         await Food.findOneAndUpdate(
           { _id: id },
           { $set: { status: true } },
-          async function(err, record) {
+          async function (err, record) {
             if (err) throw err;
             record.save;
             console.log("update food");
@@ -95,7 +95,7 @@ router
         await Profile.findOneAndUpdate(
           { "food._id": id },
           { $set: { "food.$.status": true } },
-          async function(err2, prodata) {
+          async function (err2, prodata) {
             if (err2) throw err2;
             prodata.save();
             console.log("update users food");
@@ -106,13 +106,13 @@ router
   Thank you for your contribution!`;
 
             const mailOptions = {
-              from: "projectlenity365@gmail.com",
+              from: "email",
               to: prodata.local.email,
               subject: "Food delivery done",
               text: html
             };
 
-            await transporter.sendMail(mailOptions, function(error, info) {
+            await transporter.sendMail(mailOptions, function (error, info) {
               if (error) {
                 console.log(error);
               } else {
@@ -127,7 +127,7 @@ router
         await Executive.findOneAndUpdate(
           { _id: req.user.id, "food._id": id },
           { $set: { "food.$.status": true } },
-          async function(err1, exedata) {
+          async function (err1, exedata) {
             if (err1) throw err1;
             await exedata;
             exedata.save();
@@ -146,7 +146,7 @@ router
         Item.findOneAndUpdate(
           { _id: id },
           { $set: { status: true } },
-          async function(err, record) {
+          async function (err, record) {
             if (err) throw err;
             await record;
             record.save;
@@ -158,7 +158,7 @@ router
         Profile.findOneAndUpdate(
           { "item._id": id },
           { $set: { "item.$.status": true } },
-          async function(err2, prodata) {
+          async function (err2, prodata) {
             if (err2) throw err2;
             await prodata;
             prodata.save();
@@ -170,13 +170,13 @@ router
       Thank you for your contribution!`;
 
             const mailOptions = {
-              from: "projectlenity365@gmail.com",
+              from: "email",
               to: prodata.local.email,
               subject: "Your item has been delivered",
               text: html
             };
 
-            await transporter.sendMail(mailOptions, function(error, info) {
+            await transporter.sendMail(mailOptions, function (error, info) {
               if (error) {
                 console.log(error);
               } else {
@@ -190,7 +190,7 @@ router
         Executive.findOneAndUpdate(
           { _id: req.user.id, "item._id": id },
           { $set: { "item.$.status": true } },
-          async function(err1, exedata) {
+          async function (err1, exedata) {
             if (err1) throw err1;
             exedata.save();
             console.log("update executives food");
@@ -210,7 +210,7 @@ router
         NGO.findOneAndUpdate(
           { _id: id },
           { $set: { status: true } },
-          async function(err, record) {
+          async function (err, record) {
             if (err) throw err;
             record.save;
             console.log("updated ngo donation");
@@ -225,13 +225,13 @@ router
       Thank you for your contribution!`;
 
             const mailOptions = {
-              from: "projectlenity365@gmail.com",
+              from: "email",
               to: pro1.local.email,
               subject: "Your donation to the  has been delivered",
               text: html
             };
 
-            await transporter.sendMail(mailOptions, function(error, info) {
+            await transporter.sendMail(mailOptions, function (error, info) {
               if (error) {
                 console.log(error);
               } else {
@@ -245,7 +245,7 @@ router
         Executive.findOneAndUpdate(
           { _id: req.user.id, "ngo._id": id },
           { $set: { "ngo.$.status": true } },
-          async function(err1, exedata) {
+          async function (err1, exedata) {
             if (err1) throw err1;
             await exedata;
             await exedata.save();
@@ -267,7 +267,7 @@ router
         await RequestInquiry.findOneAndUpdate(
           { _id: id },
           { $set: { status: true } },
-          async function(err, record) {
+          async function (err, record) {
             if (err) throw err;
             record.save;
             console.log("update ngos request");
@@ -276,7 +276,7 @@ router
             await NgoInquiry.findOneAndUpdate(
               { "requests._id": id },
               { $set: { "requests.$.status": true } },
-              async function(err2, prodata) {
+              async function (err2, prodata) {
                 if (err2) throw err2;
                 prodata.save();
                 console.log("update ngo inquiry table");
@@ -287,13 +287,13 @@ router
   Thank you for your contribution!`;
 
                 const mailOptions = {
-                  from: "projectlenity365@gmail.com",
+                  from: "email",
                   to: prodata.email,
                   subject: "Request delivered",
                   text: html
                 };
 
-                await transporter.sendMail(mailOptions, function(error, info) {
+                await transporter.sendMail(mailOptions, function (error, info) {
                   if (error) {
                     console.log(error);
                   } else {
@@ -311,7 +311,7 @@ router
         await Executive.findOneAndUpdate(
           { _id: req.user.id, "ngoInquiry._id": id },
           { $set: { "ngoInquiry.$.status": true } },
-          async function(err1, exedata) {
+          async function (err1, exedata) {
             if (err1) throw err1;
             await exedata;
             exedata.save();

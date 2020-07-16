@@ -23,8 +23,8 @@ Request = models.request;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "projectlenity365@gmail.com",
-    pass: "lenity1234"
+    user: "your email here",
+    pass: "lpassword"
   }
 });
 
@@ -116,7 +116,7 @@ router.post("/", passportJWT, urlencodedParser, async (req, res, next) => {
 // Have a pleasant day!`;
 
 //     const mailOptions = {
-//       from: 'projectlenity365@gmail.com',
+//       from: '',
 //       to: record.email,
 //       subject: 'Delivery notification',
 //       text: html
@@ -473,7 +473,7 @@ Please reach there asap and confirm after successful delivery.
 Have a pleasant day!`;
 
                         const mailOptions = {
-                          from: "projectlenity365@gmail.com",
+                          from: "email",
                           to: record.email,
                           subject: "Delivery Notification",
                           text: html
@@ -591,7 +591,7 @@ Have a pleasant day!`;
 // Have a pleasant day!`;
 
 //                       const mailOptions = {
-//                         from: "projectlenity365@gmail.com",
+//                         from: "",
 //                         to: record.email,
 //                         subject: "Delivery Notification",
 //                         text: html
@@ -745,7 +745,7 @@ router.post(
     Have a pleasant day!`;
 
           const mailOptions = {
-            from: "projectlenity365@gmail.com",
+            from: "email",
             to: record.email,
             subject: "Delivery notification",
             text: html
